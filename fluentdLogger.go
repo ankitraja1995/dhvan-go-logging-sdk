@@ -2,10 +2,11 @@ package dhvan_go_logging_sdk
 
 import (
 	"bytes"
-	"dhvan-go-logging-sdk/constants"
-	"dhvan-go-logging-sdk/customErrors"
+
 	"encoding/json"
 	"fmt"
+	"github.com/ankitraja1995/dhvan-go-logging-sdk/constants"
+	"github.com/ankitraja1995/dhvan-go-logging-sdk/customErrors"
 	"github.com/fluent/fluent-logger-golang/fluent"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/natefinch/lumberjack.v2"

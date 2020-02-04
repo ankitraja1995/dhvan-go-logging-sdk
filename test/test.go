@@ -8,7 +8,7 @@ import (
 func main() {
 	var z int = 2
 
-	a := Logger.LogConfig{true, "127.0.0.1", 24224, "logs/testTolerant1.log",
+	a := LogConfig{true, "127.0.0.1", 24224, "logs/testTolerant1.log",
 		1, 10, 11, true, Error, 100000,
 		"tlogs/sdk.log", 3, 6000}
 	b := a.GetLogger()

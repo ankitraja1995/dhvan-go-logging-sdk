@@ -1,7 +1,7 @@
 package dhvan_go_logging_sdk
 
 import (
-	"dhvan-go-logging-sdk/customErrors"
+	"github.com/ankitraja1995/dhvan-go-logging-sdk/customErrors"
 	"github.com/fluent/fluent-logger-golang/fluent"
 	"github.com/sirupsen/logrus"
 	"sync"
