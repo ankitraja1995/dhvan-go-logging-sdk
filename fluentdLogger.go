@@ -1,4 +1,4 @@
-package Logger
+package dhvan_go_logging_sdk
 
 import (
 	"bytes"

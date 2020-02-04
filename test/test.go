@@ -1,8 +1,6 @@
 package main
 
 import (
-	"dhvan-go-logging-sdk/Logger"
-	"dhvan-go-logging-sdk/enums"
 	"fmt"
 	"time"
 )
