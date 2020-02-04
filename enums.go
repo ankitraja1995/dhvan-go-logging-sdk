@@ -1,4 +1,4 @@
-package enums
+package dhvan_go_logging_sdk
 
 type LogType string
 
