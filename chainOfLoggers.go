@@ -1,30 +1,26 @@
 package dhvan_go_logging_sdk
 
-import (
-	"dhvan-go-logging-sdk/enums"
-)
-
 func GetChainOfLoggers() abstractLogger {
 	warn := &warn{}
-	warn.setLevel(enums.WarnLevel)
+	warn.setLevel(WarnLevel)
 
 	error := &errors{}
-	error.setLevel(enums.ErrorLevel)
+	error.setLevel(ErrorLevel)
 
 	panic := &panic{}
-	panic.setLevel(enums.PanicLevel)
+	panic.setLevel(PanicLevel)
 
 	fatal := &fatal{}
-	fatal.setLevel(enums.FatalLevel)
+	fatal.setLevel(FatalLevel)
 
 	debug := &debug{}
-	debug.setLevel(enums.DebugLevel)
+	debug.setLevel(DebugLevel)
 
 	info := &info{}
-	info.setLevel(enums.InfoLevel)
+	info.setLevel(InfoLevel)
 
 	trace := &trace{}
-	trace.setLevel(enums.Trace_level)
+	trace.setLevel(Trace_level)
 
 	warn.setNext(error)
 	error.setNext(panic)

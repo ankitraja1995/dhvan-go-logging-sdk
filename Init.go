@@ -2,7 +2,6 @@ package dhvan_go_logging_sdk
 
 import (
 	"dhvan-go-logging-sdk/customErrors"
-	"dhvan-go-logging-sdk/enums"
 	"github.com/fluent/fluent-logger-golang/fluent"
 	"github.com/sirupsen/logrus"
 	"sync"
@@ -18,7 +17,7 @@ type LogConfig struct {
 	MaxSize                  int
 	MaxAge                   int
 	Compress                 bool
-	GlobalLoggingType        enums.LogType
+	GlobalLoggingType        LogType
 	FluentdPostTimeoutMillis time.Duration
 	InternalLogPath          string
 	MaxRetry                 int
@@ -31,7 +30,7 @@ type LogFileConfig struct {
 	MaxSize           int
 	MaxAge            int
 	Compress          bool
-	GlobalLoggingType enums.LogType
+	GlobalLoggingType LogType
 }
 
 func (lc *LogConfig) GetLogger() *FluentdLogger {

@@ -19,16 +19,16 @@ package dhvan_go_logging_sdk
 //	FileLogger        *logrus.Logger
 //}
 //
-//func (fluentdLogger *FluentdLogger) Log(LogType enums.LogType, tag string, obj interface{}) {
+//func (fluentdLogger *FluentdLogger) Log(LogType LogType, tag string, obj interface{}) {
 //	if fluentdLogger.InitLogDetails.IsEnabled {
 //		go fluentdLogger.asyncLog(LogType, tag, obj)
 //	}
 //}
 //
-//func (fluentdLogger *FluentdLogger) asyncLog(logType enums.LogType, tag string, obj interface{}) {
+//func (fluentdLogger *FluentdLogger) asyncLog(logType LogType, tag string, obj interface{}) {
 //	//data := inputArgsToMap(format, args)
 //
-//	passedLogLevel := enums.GetLogLevelFromLogType(logType)
+//	passedLogLevel := GetLogLevelFromLogType(logType)
 //	loggerChain := GetChainOfLoggers()
 //	fluentdPostErr := loggerChain.Execute(fluentdLogger, passedLogLevel, tag, data)
 //
@@ -103,7 +103,7 @@ package dhvan_go_logging_sdk
 //	return data
 //}
 //
-//func writeTofile(fluentdLogger *FluentdLogger, format string, logType enums.LogType, isEvent bool) {
+//func writeTofile(fluentdLogger *FluentdLogger, format string, logType LogType, isEvent bool) {
 //	jsonData, jsonMarshallErr := json.Marshal(format)
 //	if jsonMarshallErr != nil {
 //		jsonMarshallErr = customErrors.Wrapf(jsonMarshallErr, "Error: while marshalling-- %v  for logging into file", format)

@@ -1,25 +1,22 @@
 package dhvan_go_logging_sdk
 
-import (
-	"dhvan-go-logging-sdk/enums"
-)
 
 type info struct {
 	next  abstractLogger
-	level enums.LogLevel
+	level LogLevel
 }
 
 func (inf *info) setNext(next abstractLogger) {
 	inf.next = next
 }
 
-func (inf *info) setLevel(level enums.LogLevel) {
+func (inf *info) setLevel(level LogLevel) {
 	inf.level = level
 }
 
-func (inf *info) Execute(fluentdLogger *FluentdLogger, passedLogLevel enums.LogLevel, tag string, data map[string]string) error {
+func (inf *info) Execute(fluentdLogger *FluentdLogger, passedLogLevel LogLevel, tag string, data map[string]string) error {
 	var fluentdPostError error
-	if inf.level == passedLogLevel && passedLogLevel >= enums.GetLogLevelFromLogType(fluentdLogger.InitLogDetails.GlobalLoggingType) {
+	if inf.level == passedLogLevel && passedLogLevel >= GetLogLevelFromLogType(fluentdLogger.InitLogDetails.GlobalLoggingType) {
 		fluentdPostError = fluentdLogger.FluentdConnection.Post(tag, data)
 	}
 	if inf.next != nil {

@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"dhvan-go-logging-sdk/constants"
 	"dhvan-go-logging-sdk/customErrors"
-	"dhvan-go-logging-sdk/enums"
 	"encoding/json"
 	"fmt"
 	"github.com/fluent/fluent-logger-golang/fluent"
@@ -22,49 +21,49 @@ type FluentdLogger struct {
 
 func (fluentdLogger *FluentdLogger) Info( tag string, format string, args ...interface{}) {
 	if fluentdLogger.InitLogDetails.IsEnabled {
-		go fluentdLogger.asyncLog(tag, format, enums.Info, args...)
+		go fluentdLogger.asyncLog(tag, format, Info, args...)
 	}
 }
 
 func (fluentdLogger *FluentdLogger) Debug( tag string, format string, args ...interface{}) {
 	if fluentdLogger.InitLogDetails.IsEnabled {
-		go fluentdLogger.asyncLog(tag, format, enums.Debug, args...)
+		go fluentdLogger.asyncLog(tag, format, Debug, args...)
 	}
 }
 
 func (fluentdLogger *FluentdLogger) Trace( tag string, format string, args ...interface{}) {
 	if fluentdLogger.InitLogDetails.IsEnabled {
-		go fluentdLogger.asyncLog(tag, format, enums.Trace, args...)
+		go fluentdLogger.asyncLog(tag, format, Trace, args...)
 	}
 }
 
 func (fluentdLogger *FluentdLogger) Error( tag string, format string, args ...interface{}) {
 	if fluentdLogger.InitLogDetails.IsEnabled {
-		go fluentdLogger.asyncLog(tag, format, enums.Error,  args...)
+		go fluentdLogger.asyncLog(tag, format, Error,  args...)
 	}
 }
 
 func (fluentdLogger *FluentdLogger) Fatal( tag string, format string, args ...interface{}) {
 	if fluentdLogger.InitLogDetails.IsEnabled {
-		go fluentdLogger.asyncLog(tag, format, enums.Fatal, args...)
+		go fluentdLogger.asyncLog(tag, format, Fatal, args...)
 	}
 }
 
 func (fluentdLogger *FluentdLogger) Panic( tag string, format string, args ...interface{}) {
 	if fluentdLogger.InitLogDetails.IsEnabled {
-		go fluentdLogger.asyncLog(tag, format, enums.Panic, args...)
+		go fluentdLogger.asyncLog(tag, format, Panic, args...)
 	}
 }
 
 func (fluentdLogger *FluentdLogger) Warn( tag string, format string, args ...interface{}) {
 	if fluentdLogger.InitLogDetails.IsEnabled {
-		go fluentdLogger.asyncLog(tag, format, enums.Warn, args...)
+		go fluentdLogger.asyncLog(tag, format, Warn, args...)
 	}
 }
 
-func (fluentdLogger *FluentdLogger) asyncLog( tag string,  format string,  logType enums.LogType, args ...interface{}) {
+func (fluentdLogger *FluentdLogger) asyncLog( tag string,  format string,  logType LogType, args ...interface{}) {
 	data := inputArgsToMap(format,args...)
-	logLevel := enums.GetLogLevelFromLogType(logType)
+	logLevel := GetLogLevelFromLogType(logType)
 	loggerChain := GetChainOfLoggers()
 	fluentdPostErr := loggerChain.Execute(fluentdLogger, logLevel, tag, data)
 
@@ -145,7 +144,7 @@ func inputArgsToMap(format string, args ...interface{}) map[string]string {
 	return data
 }
 
-func writeTofile(fluentdLogger *FluentdLogger, format string, logType enums.LogType, isEvent bool) {
+func writeTofile(fluentdLogger *FluentdLogger, format string, logType LogType, isEvent bool) {
 	jsonData, jsonMarshallErr := json.Marshal(format)
 	if jsonMarshallErr != nil {
 		jsonMarshallErr = customErrors.Wrapf(jsonMarshallErr, "Error: while marshalling-- %v  for logging into file", format)
